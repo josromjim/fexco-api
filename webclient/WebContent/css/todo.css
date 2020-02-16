@@ -1,0 +1,20 @@
+h1.headline {
+	text-align: center;
+	margin: 50px 0;
+	font-weight: bold;
+	font-size: 48px;
+}
+
+#no-todos {
+	text-align: center;
+	font-size: 28px;
+}
+
+.table>tbody>tr>td.button-cell {
+	width: 70px;
+	text-align: center;
+}
+
+.table>tbody>tr>td.task-cell {
+	vertical-align: middle;
+}
