@@ -2,7 +2,7 @@
 Fexco Assignament. API Project
 
 # Architecture
-Fexco Assignament. API Project
+![Architecture](architecture.jpg)
 
 # Implementation
 Fexco Assignament. API Project
