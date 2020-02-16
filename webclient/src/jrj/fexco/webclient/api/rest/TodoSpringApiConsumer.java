@@ -33,6 +33,10 @@ public class TodoSpringApiConsumer implements TodoRestApiConsumer {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	/**
+	 * URL to connect the API. This URL could be obtained from a configuration file
+	 * instead of hardcoded.
+	 */
 	private static final String API_BASE_URL = "http://localhost:8080/api/api/todo/";
 
 	/**
