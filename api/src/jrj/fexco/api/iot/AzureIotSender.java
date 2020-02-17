@@ -26,18 +26,37 @@ public class AzureIotSender implements IotSender {
 	// Using the MQTT protocol to connect to IoT Hub
 	private static final IotHubClientProtocol protocol = IotHubClientProtocol.MQTT;
 	private DeviceClient client;
+	private boolean isConnectionOpen = false;
 
 	public AzureIotSender() {
+		this.initializeClient();
+	}
 
+	private void initializeClient() {
 		try {
 			// We create the client to the IoT device.
 			client = new DeviceClient(connString, protocol);
+			this.openConnetion();
 		} catch (IllegalArgumentException e) {
 			// Log error
 			e.printStackTrace();
 		} catch (URISyntaxException e) {
 			// Log error
 			e.printStackTrace();
+		} catch (IOException e) {
+			// Log error
+			e.printStackTrace();
+		}
+	}
+
+	private void openConnetion() throws IOException {
+		try {
+			// Open the connection
+			client.open();
+			isConnectionOpen = true;
+		} catch (IOException e) {
+			isConnectionOpen = false;
+			throw e;
 		}
 	}
 
@@ -51,13 +70,6 @@ public class AzureIotSender implements IotSender {
 		public void execute(IotHubStatusCode status, Object context) {
 			System.out.println("IoT Hub responded to message with status: " + status.name());
 
-			try {
-				// We just close the connection
-				client.closeNow();
-			} catch (IOException e) {
-				// Log the error
-				e.printStackTrace();
-			}
 			if (context != null) {
 				synchronized (context) {
 					context.notify();
@@ -76,10 +88,30 @@ public class AzureIotSender implements IotSender {
 		// An IoT hub can filter on these properties without access to the message body.
 		msg.setProperty("operationtype", type);
 
-		// Open the connection
-		client.open();
+		// Check if the client is created
+		if (client == null) {
+			this.initializeClient();
+		} else if (!isConnectionOpen) {
+			// We ensure the connection is open before sending
+			this.openConnetion();
+		}
 
 		// Send the message
-		client.sendEventAsync(msg, new EventCallback(), this);
+		if (client != null)
+			client.sendEventAsync(msg, new EventCallback(), this);
+		else
+			throw new IOException("IoT Hub not reachable");
+	}
+
+	@Override
+	protected void finalize() throws Throwable {
+		try {
+			// We just close the connection
+			if (client != null)
+				client.closeNow();
+		} catch (IOException e) {
+			// Log the error
+			e.printStackTrace();
+		}
 	}
 }

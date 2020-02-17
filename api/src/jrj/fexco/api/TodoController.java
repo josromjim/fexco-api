@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -26,13 +27,15 @@ import jrj.fexco.business.repository.ITodoRepository;
  * actions to operate over the model.
  * <p>
  * The class will be loaded by jersey servlet container when route "todo" is
- * reached.
+ * reached. It is marked as Singleton to improve the performance because Jersey
+ * creates a new object per request by default.
  * </p>
  * 
  * @author José Romero
  *
  */
 @Secure
+@Singleton
 @Path("/todo")
 public class TodoController {
 
