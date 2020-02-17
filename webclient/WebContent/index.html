@@ -1,6 +1,7 @@
 <!doctype html>
 <html ng-app="todoApp">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Shared ToDo App</title>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
@@ -14,61 +15,60 @@
 	<link rel="stylesheet" href="css/todo.css">
 </head>
 <body>
-	<h1 class="headline">Shared ToDo App</h1>
 	<div class="container">
+		<h1 class="headline">Shared ToDo App</h1>
 		<div ng-controller="TodoListController as todoList">
-			<div class="row">
-				<div class="content">
-					<div class="alert alert-danger" role="alert"
-						ng-show="todoList.error">
-						<strong>{{todoList.errorMessage.short}}:</strong>
-						{{todoList.errorMessage.long}}
-					</div>
-					<div class="row">
-						<form ng-submit="todoList.submit()">
-							<div class="col- col-lg-10">
-								<input class="form-control" placeholder="Enter Todo" type="text"
-									ng-model="todoList.todoTask" required min="1" />
-							</div>
-						</form>
-
-						<div class="col-lg-2">
-							<button class="btn btn-primary" ng-disabled="!todoList.todoTask"
-								ng-hide="todoList.editMode" ng-click="todoList.addTodo()">Add
-								Todo</button>
-							<button type="btn btn-primary" class="btn btn-primary"
-								ng-disabled="!todoList.todoTask" ng-show="todoList.editMode"
-								ng-click="todoList.updateTodo()">Save</button>
-							<button type="btn btn-primary" class="btn btn-primary"
-								ng-click="todoList.resetTodoField()">Reset</button>
-						</div>
-					</div>
-					<hr />
-
-					<div id="no-todos" class="alert alert-info"
-						ng-show="todoList.todos.length == 0">No todos found</div>
-					<table class="table table-bordered table-striped"
-						ng-show="todoList.todos.length > 0">
-						<thead>
-							<tr>
-								<th style="text-align: center; width: 25px;">Delete</th>
-								<th style="text-align: center; width: 25px;">Update</th>
-								<th style="text-align: center;">Task</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="todo in todoList.todos">
-								<td class="button-cell"><button
-										class="btn btn-mini btn-danger"
-										ng-click="todoList.deleteTodo(todo)">Delete</button></td>
-								<td class="button-cell"><button
-										class="btn btn-mini btn-warning"
-										ng-click="todoList.editTodo(todo)">Update</button></td>
-								<td class="task-cell">{{todo.task}}</td>
-							</tr>
-						</tbody>
-					</table>
+			<div class="content">
+				<div class="alert alert-danger" role="alert"
+					ng-show="todoList.error">
+					<strong>{{todoList.errorMessage.short}}:</strong>
+					{{todoList.errorMessage.long}}
 				</div>
+				<div class="row">
+					<form ng-submit="todoList.submit()">
+						<div class="col-sm-12 col-lg-10">
+							<input class="form-control" placeholder="Enter Todo" type="text"
+								ng-model="todoList.todoTask" required min="1" />
+						</div>
+					</form>
+
+					<div class="col-sm-12 col-lg-2">
+						<button class="btn btn-primary" ng-disabled="!todoList.todoTask"
+							ng-hide="todoList.editMode" ng-click="todoList.addTodo()">Add
+							Todo</button>
+						<button type="btn btn-primary" class="btn btn-primary"
+							ng-disabled="!todoList.todoTask" ng-show="todoList.editMode"
+							ng-click="todoList.updateTodo()">Save</button>
+						<button type="btn btn-primary" class="btn btn-primary"
+							ng-click="todoList.resetTodoField()">Reset</button>
+					</div>
+				</div>
+
+				<hr />
+
+				<div id="no-todos" class="alert alert-info"
+					ng-show="todoList.todos.length == 0">No todos found</div>
+				<table class="table table-bordered table-striped"
+					ng-show="todoList.todos.length > 0">
+					<thead>
+						<tr>
+							<th style="text-align: center; width: 25px;">Delete</th>
+							<th style="text-align: center; width: 25px;">Update</th>
+							<th style="text-align: center;">Task</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="todo in todoList.todos">
+							<td class="button-cell"><button
+									class="btn btn-mini btn-danger"
+									ng-click="todoList.deleteTodo(todo)">Delete</button></td>
+							<td class="button-cell"><button
+									class="btn btn-mini btn-warning"
+									ng-click="todoList.editTodo(todo)">Update</button></td>
+							<td class="task-cell">{{todo.task}}</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
