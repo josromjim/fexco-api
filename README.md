@@ -55,7 +55,7 @@ The UI is a SPA implemented using AngularJS for beheavior and Bootstrap 3 for la
 
 
 # Conclusions
-This application demonstrates how to implement a Java API that provides two interfaces: RESTful HTTP and MQTT. Also demonstrates how to consume both interfaces by another Java Web Application which involves REST, MQTT and WebSocket consuming.
+This application demonstrates how to implement a Java API that provides two interfaces: RESTful HTTP and MQTT. In addition, it demonstrates how to consume both interfaces by another Java Web Application which involves REST, MQTT and WebSocket consuming.
 
 You can see and test a real implementation of the system deployed to Microsoft Azure on https://jrjfexcowebclient.azurewebsites.net.
 
