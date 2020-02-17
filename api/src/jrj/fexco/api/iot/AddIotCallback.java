@@ -12,7 +12,7 @@ import jrj.fexco.api.viewmodel.TodoViewModel;
  * Note: DI on IoTSender
  * </p>
  * 
- * @author José Romero
+ * @author JosÃ© Romero
  *
  */
 public class AddIotCallback extends HookCallback {
@@ -28,7 +28,7 @@ public class AddIotCallback extends HookCallback {
 		try {
 			sender.send((TodoViewModel) params, "insert");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// Log the error and let the API run
 			e.printStackTrace();
 		}
 	}
