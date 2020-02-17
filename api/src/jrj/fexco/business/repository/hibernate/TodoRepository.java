@@ -13,7 +13,7 @@ import jrj.fexco.business.repository.ITodoRepository;
  * Implementation of IRepository to manage all ToDo domain operations and using
  * Hibernate as DAO and ORM.
  * 
- * @author José Romero
+ * @author JosÃ© Romero
  *
  */
 public class TodoRepository implements ITodoRepository {
@@ -21,6 +21,8 @@ public class TodoRepository implements ITodoRepository {
 	private SessionFactory sessionFactory;
 
 	public TodoRepository() {
+                // Here we could create an utility to get the SessionFactory as a Singleton.
+                // but that's not necessary in this case because is used and created by a Singleton class.
 		try {
 			this.sessionFactory = new Configuration().configure().buildSessionFactory();
 		} catch (Throwable ex) {
