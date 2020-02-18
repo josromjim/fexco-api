@@ -12,7 +12,7 @@ import jrj.fexco.api.viewmodel.TodoViewModel;
  * Note: DI on IoTSender
  * </p>
  * 
- * @author JosÃ© Romero
+ * @author José Romero
  *
  */
 public class RemoveIotCallback extends HookCallback {
