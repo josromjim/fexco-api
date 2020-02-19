@@ -10,7 +10,3 @@ Feature: Delete Todo task
 	Scenario: There is a call to the delete end point with non-existent todo
     Given The consumer sends a delete todo with non-existent todo
     Then The system returns Not Found
-
-  Scenario: There is a call to delete end point with wrong data
-    Given The consumer sends a delete todo with wrong data
-    Then The system returns an error

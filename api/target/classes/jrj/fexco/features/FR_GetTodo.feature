@@ -6,6 +6,6 @@ Feature: Get Todo task
     Then The system gets the todo from the database
     And returns the data obtained
 
-  Scenario: There is a call to add end point with wrong id
-    Given The consumer sends a new todo with wrong id
+  Scenario: There is a call to get end point with non-existent todo
+    Given The consumer requests get with non-existent todo id
     Then The system returns Not Found
