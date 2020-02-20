@@ -39,32 +39,12 @@ public class StepDefinitions {
 	private static final String TEXT_NEW_TASK = "Cucumber test UI";
 	private static final String TEXT_UPDATED_TASK = "Cucumber test UI updated";
 
-	private final WebDriver driver;
+	private final WebDriver driver = new ChromeDriver();
 	private WebDriver otherDriver; // Second driver for IoT
 
-	public StepDefinitions() {
-		driver = new ChromeDriver(getChromeOptions());
-	}
-
 	/**
-	 * To solve problem: Timed out receiving message from renderer
-	 * 
-	 * @return options
+	 * Wait for AngularJS loading
 	 */
-	private ChromeOptions getChromeOptions() {
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("enable-automation");
-		options.addArguments("--headless");
-		options.addArguments("--window-size=1920,1080");
-		options.addArguments("--no-sandbox");
-		options.addArguments("--disable-extensions");
-		options.addArguments("--dns-prefetch-disable");
-		options.addArguments("--disable-gpu");
-		options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-
-		return options;
-	}
-
 	private void waitAngularLoads() {
 		new WebDriverWait(driver, 10L).until(new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver d) {
@@ -79,6 +59,9 @@ public class StepDefinitions {
 		});
 	}
 
+	/**
+	 * Wait for AngularJS request loadings
+	 */
 	private void waitAngularRequest() {
 		new WebDriverWait(driver, 10L).until(new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver d) {
@@ -341,7 +324,7 @@ public class StepDefinitions {
 
 	@Given("The IoT module receives a {string} message with a task")
 	public void the_IoT_module_receives_a_message_with_a_task(String type) {
-		this.otherDriver = new ChromeDriver(getChromeOptions());
+		this.otherDriver = new ChromeDriver();
 		driver.get(BASE_URL);
 		this.otherDriver.get(BASE_URL);
 
