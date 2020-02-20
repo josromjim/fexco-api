@@ -14,6 +14,7 @@
         <junit.version>4.13</junit.version>
         <apache.version>4.5.11</apache.version>
         <jsonassert.version>1.5.0</jsonassert.version>
+        <selenium.version>3.141.59</selenium.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -50,6 +51,12 @@
 		    <artifactId>jsonassert</artifactId>
 		    <version>${jsonassert.version}</version>
 		    <scope>test</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.seleniumhq.selenium</groupId>
+		    <artifactId>selenium-java</artifactId>
+		    <version>${selenium.version}</version>
 		</dependency>
     </dependencies>
 

@@ -19,27 +19,27 @@
 		<h1 class="headline">Shared ToDo App</h1>
 		<div ng-controller="TodoListController as todoList">
 			<div class="content">
-				<div class="alert alert-danger" role="alert"
+				<div id="alerts-panel" class="alert alert-danger" role="alert"
 					ng-show="todoList.error">
 					<strong>{{todoList.errorMessage.short}}:</strong>
 					{{todoList.errorMessage.long}}
 				</div>
 				<div class="row">
-					<form ng-submit="todoList.submit()">
+					<form id="todo-form" ng-submit="todoList.submit()">
 						<div class="col-sm-12 col-lg-10">
-							<input class="form-control" placeholder="Enter Todo" type="text"
+							<input id="task-input" class="form-control" placeholder="Enter Todo" type="text"
 								ng-model="todoList.todoTask" required min="1" />
 						</div>
 					</form>
 
 					<div class="col-sm-12 col-lg-2">
-						<button class="btn btn-primary" ng-disabled="!todoList.todoTask"
+						<button id="add-btn" class="btn btn-primary" ng-disabled="!todoList.todoTask"
 							ng-hide="todoList.editMode" ng-click="todoList.addTodo()">Add
 							Todo</button>
-						<button type="btn btn-primary" class="btn btn-primary"
+						<button id="save-btn" type="btn btn-primary" class="btn btn-primary"
 							ng-disabled="!todoList.todoTask" ng-show="todoList.editMode"
 							ng-click="todoList.updateTodo()">Save</button>
-						<button type="btn btn-primary" class="btn btn-primary"
+						<button id="reset-btn" type="btn btn-primary" class="btn btn-primary"
 							ng-click="todoList.resetTodoField()">Reset</button>
 					</div>
 				</div>
@@ -48,7 +48,7 @@
 
 				<div id="no-todos" class="alert alert-info"
 					ng-show="todoList.todos.length == 0">No todos found</div>
-				<table class="table table-bordered table-striped"
+				<table is="table-todos" class="table table-bordered table-striped"
 					ng-show="todoList.todos.length > 0">
 					<thead>
 						<tr>

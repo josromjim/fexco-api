@@ -1,4 +1,4 @@
-package jrj.fexco.test;
+package jrj.fexco.test.api;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -32,6 +32,15 @@ import org.skyscreamer.jsonassert.comparator.CustomComparator;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
+/** 
+ * Steps definitions for API Tests.
+ * <p>
+ * This class uses Apache HttpClient to test the API.
+ * </p> 
+ * 
+ * @author José Romero
+ *
+ */
 public class StepDefinitions {
 
 	private static final String BASE_API = "http://localhost:8080/api/api/todo/";
@@ -44,7 +53,7 @@ public class StepDefinitions {
 	private final CloseableHttpClient httpClient = HttpClients.createDefault();
 
 	private HttpResponse response;
-	private static String idCreated; // We will operate with created todo in first test
+	private static String idCreated; // We will operate with ToDo id created by first test
 
 	/*
 	 * Create
@@ -67,7 +76,7 @@ public class StepDefinitions {
 
 	@Then("sends a message with data created to IoT Hub to deliver it through MQTT")
 	public void sends_a_message_with_data_created_to_IoT_Hub_to_deliver_it_through_MQTT() {
-		// TODO Here we can implement a IoT Receiver and check if the message
+		// TODO Here we can implement an IoT Receiver and check the message
 	}
 
 	@Then("returns the data created")
@@ -182,7 +191,7 @@ public class StepDefinitions {
 
 	@Then("sends a message with data updated to IoT Hub to deliver it through MQTT")
 	public void sends_a_message_with_data_updated_to_IoT_Hub_to_deliver_it_through_MQTT() {
-		// TODO Here we can implement a IoT Receiver and check if the message
+		// TODO Here we can implement an IoT Receiver and check the message
 	}
 
 	@Then("returns the data updated")
@@ -229,12 +238,12 @@ public class StepDefinitions {
 
 	@Then("The system deletes the todo from the database")
 	public void the_system_deletes_the_todo_from_the_database() {
-		// TODO Here we can implement a IoT Receiver and check if the message
+		// TODO Here we can implement an IoT Receiver and check the message
 	}
 
 	@Then("sends a message with data deleted to IoT Hub to deliver it through MQTT")
 	public void sends_a_message_with_data_deleted_to_IoT_Hub_to_deliver_it_through_MQTT() {
-		// TODO Here we can implement a IoT Receiver and check if the message
+		// TODO Here we can implement an IoT Receiver and check the message
 	}
 
 	@Then("returns the data deleted")
